@@ -6,11 +6,11 @@ class CashRegister
     @discount = discount
     @total = 0
     @items_array = []
-    @last_item = 0.0
+    @last_item = {}
   end
 
   def add_item(title, price, quantity = 1)
-    self.last_item = price
+    self.last_item = {price : price, quantity : quantity}
     self.total += (price * quantity)
     quantity.times do 
       self.items_array.push(title)
@@ -36,7 +36,7 @@ class CashRegister
   end
   
   def void_last_transaction
-    self.total = self.total - self.last_item
+    self.total = self.total - self.last_item[price]* self.last_item[quantity]
     self.items_array.pop()
     if self.items_array.empty?
       self.total = 0.0
