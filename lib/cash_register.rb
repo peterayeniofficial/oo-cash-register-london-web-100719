@@ -37,10 +37,7 @@ class CashRegister
   
   def void_last_transaction
     self.total = self.total - self.last_item[:price]* self.last_item[:quantity]
-    self.items_array.pop()
-    if self.items_array.empty?
-      self.total = 0.0
-    end
+    
   end
 
     
