@@ -18,25 +18,25 @@ class CashRegister
   end
   
   def items
-    self.items_array 
+    @items_array 
   end
   
   def calculate_discount(discount)
-    return self.total = self.total - (self.total * discount/100)
+    return @total = @total - (@total * discount/100)
   end
   
   def apply_discount
-    if self.discount == 0 
+    if @discount == 0 
       return "There is no discount to apply."
     else
-      discounted_total = calculate_discount(self.discount)
+      discounted_total = calculate_discount(@discount)
       return "After the discount, the total comes to $#{discounted_total}."
       
     end
   end
   
   def void_last_transaction
-    self.total = self.total - self.last_item[:price]* self.last_item[:quantity]
+    self.total = @total - @last_item[:price] * @last_item[:quantity]
     
   end
 
